@@ -5,6 +5,8 @@ import com.example.job_processor.dto.JobResponse;
 import com.example.job_processor.model.Job;
 import com.example.job_processor.model.JobStatus;
 import com.example.job_processor.repository.JobRepository;
+import com.example.job_processor.queue.JobQueueService;
+
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -13,9 +15,12 @@ import java.time.Instant;
 @Service
 public class JobService {
     private final JobRepository jobRepository;
+    private final JobQueueService jobQueueService;
 
-    public JobService(JobRepository jobRepository){
+    public JobService(JobRepository jobRepository, JobQueueService jobQueueService){
+
         this.jobRepository = jobRepository;
+        this.jobQueueService = jobQueueService;
     }
 
     public JobResponse createJob(CreateJobRequest request){
@@ -27,6 +32,8 @@ public class JobService {
         job.setCreatedAt(Timestamp.from(Instant.now()));
 
         Job savedJob = jobRepository.save(job);
+        jobQueueService.enqueue(savedJob.getId());
+
         return toResponse(savedJob);
     }
 
