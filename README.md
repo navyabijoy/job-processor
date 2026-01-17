@@ -1,7 +1,8 @@
 # Distributed Job Processing System
 
-This project is a backend-focused job processing system built incrementally to understand real-world backend and distributed system concepts.  
-The system allows clients to submit jobs via a REST API, queues them using Redis, and processes them asynchronously using background workers, with persistent state stored in PostgreSQL.
+<p> This project is a backend-focused job processing system built incrementally to understand real-world backend and distributed system concepts.  
+The system allows clients to submit jobs via a REST API, queues them using Redis, and processes them asynchronously using background workers, with persistent state stored in PostgreSQL. </p>
+
 ---
 
 ## High-Level Architecture
