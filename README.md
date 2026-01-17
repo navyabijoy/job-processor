@@ -2,6 +2,11 @@
 
 This project is a backend-focused job processing system built incrementally to understand real-world backend and distributed system concepts.  
 The system allows clients to submit jobs via a REST API, queues them using Redis, and processes them asynchronously using background workers, with persistent state stored in PostgreSQL.
+---
+
+## High-Level Architecture
+
+<img width="1408" height="768" alt="Project Architecture" src="https://github.com/user-attachments/assets/f799aeb6-82a6-47c0-a75f-e327408a22a4" />
 
 ---
 
