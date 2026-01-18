@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 @Table(name = "jobs")
 public class Job {
 
+    private static final int MAX_RETRIES=3;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,15 +21,52 @@ public class Job {
     @Column(columnDefinition = "TEXT")
     private String payload;
 
-    private Integer retryCount;
+    private int retryCount;
 
     private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     // JPA requires this
     public Job() {
         this.status = JobStatus.PENDING;
         this.retryCount = 0;
         this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+
+    }
+
+    public boolean canRetry(){
+        return retryCount < MAX_RETRIES;
+    }
+
+    public void markRunning() {
+        this.status = JobStatus.RUNNING;
+        this.updatedAt = now();
+    }
+
+    public void markSuccess() {
+        this.status = JobStatus.COMPLETED;
+        this.updatedAt = now();
+    }
+
+    public void markFailed() {
+        this.status = JobStatus.FAILED;
+        this.updatedAt = now();
+    }
+
+    public void markPending() {
+        this.status = JobStatus.PENDING;
+        this.updatedAt = now();
+    }
+
+
+    public void incrementRetry() {
+        this.retryCount++;
+        this.updatedAt = now();
+    }
+
+    private Timestamp now() {
+        return new Timestamp(System.currentTimeMillis());
     }
 
     public Job(String jobType, String payload) {
