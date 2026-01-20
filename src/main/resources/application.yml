@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/job_processor
+    url: jdbc:postgresql://localhost:5432/job_processor
     username: postgres
-    password: 
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   data:
@@ -17,3 +17,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 3600000
