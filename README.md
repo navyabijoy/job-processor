@@ -1,13 +1,11 @@
-# Distributed Job Processing System
+# AI Assisted Background Task Execution Platform 
 
-<p> This project is a backend-focused job processing system built incrementally to understand real-world backend and distributed system concepts.  
-The system allows clients to submit jobs via a REST API, queues them using Redis, and processes them asynchronously using background workers, with persistent state stored in PostgreSQL. </p>
+<p> This project is a <strong>backend-focused asynchronous job processing system</strong> built incrementally to understand how real-world backend and distributed systems are designed, secured, and operated. </p> <p> The system exposes REST APIs for authenticated clients to submit jobs, enqueues them using Redis, and processes them asynchronously via background workers. Job state is persistently tracked in PostgreSQL, enabling reliable execution, bounded retries, and dead-letter handling independent of the request lifecycle. </p> <p> In addition, the system integrates an <strong>AI-assisted analysis component</strong> that observes job execution outcomes and failure patterns. The AI agent operates outside the request and execution path, analyzing historical job data to provide insights such as retry recommendations and anomaly detection, while core execution logic remains deterministic and fully controlled by the system. </p>
 
 ---
 
 ## High-Level Architecture
-
-<img width="1408" height="768" alt="Project Architecture" src="https://github.com/user-attachments/assets/f799aeb6-82a6-47c0-a75f-e327408a22a4" />
+<img width="1408" height="752" alt="proj arhictecture + ai" src="https://github.com/user-attachments/assets/61b0ceb7-10d4-4b9a-9979-de07edebc334" />
 
 ---
 
