@@ -1,4 +1,4 @@
-# AI Assisted Background Task Execution Platform 
+# Fault-Tolerant Background Job Processing Service 
 
 <p> This project is a <strong>backend-focused asynchronous job processing system</strong> built incrementally to understand how real-world backend and distributed systems are designed, secured, and operated. </p> <p> The system exposes REST APIs for authenticated clients to submit jobs, enqueues them using Redis, and processes them asynchronously via background workers. Job state is persistently tracked in PostgreSQL, enabling reliable execution, bounded retries, and dead-letter handling independent of the request lifecycle. </p> <p> In addition, the system integrates an <strong>AI-assisted analysis component</strong> that observes job execution outcomes and failure patterns. The AI agent operates outside the request and execution path, analyzing historical job data to provide insights such as retry recommendations and anomaly detection, while core execution logic remains deterministic and fully controlled by the system. </p>
 
